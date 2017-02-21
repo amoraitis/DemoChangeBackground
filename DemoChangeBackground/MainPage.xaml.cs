@@ -1,5 +1,6 @@
 ﻿using DemoChangeBackground.Model;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -17,8 +18,8 @@ namespace DemoChangeBackground
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             base.OnNavigatingFrom(e);
-            foreach (var item in rootFrame.BackStack.ToList())
-                rootFrame.BackStack.Remove(item)
+            foreach (var item in this.Frame.BackStack.ToList())
+                this.Frame.BackStack.Remove(item);
         }
         private void ItemsControl_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {

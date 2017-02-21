@@ -7,11 +7,6 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 namespace DemoChangeBackground.Views
 {
@@ -20,6 +15,7 @@ namespace DemoChangeBackground.Views
         public TicTacToe()
         {
             this.InitializeComponent();
+            TicTacContainer.ItemsSource = (new ViewModel.ApplyXO()).GetContainer();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

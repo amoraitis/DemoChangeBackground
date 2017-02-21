@@ -95,6 +95,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\XOModel.cs" />
+    <Compile Include="ViewModel\ApplyXO.cs" />
     <Compile Include="ViewModel\QuotaMenuItems.cs" />
     <Compile Include="Views\ChangeBackground.xaml.cs">
       <DependentUpon>ChangeBackground.xaml</DependentUpon>
