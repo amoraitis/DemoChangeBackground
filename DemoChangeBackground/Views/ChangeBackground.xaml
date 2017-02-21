@@ -8,6 +8,7 @@
     mc:Ignorable="d">
 
     <Grid x:Name="MainGrid" Background="Green">
+        <Button Content="Back" x:Name="BackButton" Click="BackButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <HyperlinkButton Visibility="Collapsed" x:Name="MyRespond" ClickMode="Press" Click="MyRespond_Click" BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Center" VerticalAlignment="Top" IsEnabled="False">
             <TextBlock Text="Respond!" FontSize="30" Foreground="White"/>
         </HyperlinkButton>

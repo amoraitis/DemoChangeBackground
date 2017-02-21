@@ -18,7 +18,8 @@
     </Page.Resources>
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            <ListView x:Name="listView" ItemClick="listView_ItemClick" ItemTemplate="{StaticResource FillMenu}">
+        <ItemsControl Tapped="ItemsControl_Tapped">
+            <ListView x:Name="listView" ItemTemplate="{StaticResource FillMenu}">
                 <ListView.Header>
                     <controls:ScrollHeader Mode="Sticky" TargetListViewBase="{x:Bind listView}">
                         <StackPanel Orientation="Vertical" Background="CadetBlue">
@@ -28,5 +29,6 @@
                     </controls:ScrollHeader>
                 </ListView.Header>
             </ListView>
+        </ItemsControl>
     </Grid>
 </Page>

@@ -14,6 +14,7 @@ namespace DemoChangeBackground.ViewModel
         {
             var items = new ObservableCollection<MenuItem>();
             items.Add(new MenuItem() { Title = "React", SubTitle = "Check your Reaction", Page = typeof(Views.ChangeBackground) });
+            items.Add(new MenuItem() { Title = "TicTacToe", SubTitle = "Play TicTacToe and see the results!", Page = typeof(Views.TicTacToe) });
             return items;
         }
     }

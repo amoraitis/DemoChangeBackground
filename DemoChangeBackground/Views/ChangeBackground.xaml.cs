@@ -15,6 +15,7 @@ namespace DemoChangeBackground.Views
         {
             this.InitializeComponent();
         }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -38,6 +39,14 @@ namespace DemoChangeBackground.Views
             MainGrid.Background = new SolidColorBrush(Windows.UI.Colors.Red);
             var sum = clicked - now;
             Information.Text = "You did "+sum.TotalSeconds.ToString()+" seconds to respond";
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.Frame.CanGoBack)
+            {
+                this.Frame.GoBack();
+            }
         }
     }
 }

@@ -2,24 +2,32 @@
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 namespace DemoChangeBackground
 {
     public sealed partial class MainPage : Page
     {
+        MenuItem myItem;
         public MainPage()
         {
             this.InitializeComponent();
             listView.ItemsSource = ViewModel.QuotaMenuItems.GetMenuItems();
         }
-
-        private void listView_ItemClick(object sender, ItemClickEventArgs e)
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-            var handlemenu = e.ClickedItem as MenuItem;
-            MenuItem handleMenuClick = (MenuItem)listView.SelectedItem;
-            //((Frame)Window.Current.Content).Navigate(handleMenuClick.Page);
-            Application.Current.Exit();
-            //TODO: Fix listview_ItemClick to work!
+            base.OnNavigatingFrom(e);
+            foreach (var item in rootFrame.BackStack.ToList())
+                rootFrame.BackStack.Remove(item)
+        }
+        private void ItemsControl_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            setItem();
+            ((Frame)Window.Current.Content).Navigate(myItem.Page);
+        }
+        private void setItem()
+        {
+            myItem = (MenuItem)listView.SelectedItem;
         }
     }
 }
