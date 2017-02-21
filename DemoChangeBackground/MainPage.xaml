@@ -2,17 +2,31 @@
     x:Class="DemoChangeBackground.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:DemoChangeBackground"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:local="using:DemoChangeBackground.Model"
     mc:Ignorable="d">
 
-    <Grid x:Name="MainGrid" Background="Green">
-        <HyperlinkButton Visibility="Collapsed" x:Name="MyRespond" ClickMode="Press" Click="MyRespond_Click" BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Center" VerticalAlignment="Top" IsEnabled="False">
-            <TextBlock Text="Respond!" FontSize="30" Foreground="White"/>
-        </HyperlinkButton>
-        <Border Background="White" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <TextBlock x:Name="Information" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="30"/>
-        </Border>
+    <Page.Resources>
+        <DataTemplate x:Key="FillMenu" x:DataType="local:MenuItem">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{Binding Title}" FontSize="25"/>
+                <TextBlock Text="{Binding SubTitle}"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <ListView x:Name="listView" ItemClick="listView_ItemClick" ItemTemplate="{StaticResource FillMenu}">
+                <ListView.Header>
+                    <controls:ScrollHeader Mode="Sticky" TargetListViewBase="{x:Bind listView}">
+                        <StackPanel Orientation="Vertical" Background="CadetBlue">
+                            <TextBlock Text="Play" HorizontalAlignment="Center" FontSize="29"/>
+                            <TextBlock Text="Choose a game to play only if you can win..." HorizontalAlignment="Center" FontSize="15"/>
+                        </StackPanel>
+                    </controls:ScrollHeader>
+                </ListView.Header>
+            </ListView>
     </Grid>
 </Page>

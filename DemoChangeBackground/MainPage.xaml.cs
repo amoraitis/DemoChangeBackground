@@ -1,43 +1,25 @@
-﻿using System;
+﻿using DemoChangeBackground.Model;
+using System.Collections.ObjectModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 namespace DemoChangeBackground
-{    
+{
     public sealed partial class MainPage : Page
     {
-        private DispatcherTimer timer;
-        DateTime now;
-        DateTime clicked;
         public MainPage()
         {
             this.InitializeComponent();
-        }
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            //Documentation:https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.dispatchertimer
-            timer = new DispatcherTimer() { Interval = new TimeSpan(0, 0, 0, 1) };
-            timer.Start();
-            //Sample:https://github.com/Microsoft/Windows-universal-samples/blob/master/Samples/Accelerometer/cs/Scenario3_Polling.xaml.cs
-            timer.Tick += onStop;
-        }
-        private void onStop(object sender, object e)
-        {            
-            ((DispatcherTimer)sender).Stop();
-            MyRespond.IsEnabled = true;
-            MyRespond.Visibility = Visibility.Visible;
-            now = DateTime.Now;
+            listView.ItemsSource = ViewModel.QuotaMenuItems.GetMenuItems();
         }
 
-        private void MyRespond_Click(object sender, RoutedEventArgs e)
+        private void listView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            clicked = DateTime.Now;
-            MainGrid.Background = new SolidColorBrush(Windows.UI.Colors.Red);
-            var sum = clicked - now;
-            Information.Text = "You did "+sum.TotalSeconds.ToString()+" seconds to respond";
+            var handlemenu = e.ClickedItem as MenuItem;
+            MenuItem handleMenuClick = (MenuItem)listView.SelectedItem;
+            //((Frame)Window.Current.Content).Navigate(handleMenuClick.Page);
+            Application.Current.Exit();
+            //TODO: Fix listview_ItemClick to work!
         }
     }
 }
