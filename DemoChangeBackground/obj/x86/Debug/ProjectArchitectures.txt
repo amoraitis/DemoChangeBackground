@@ -1,1 +1,0 @@
-C:\Users\τασος\Documents\Visual Studio 2015\Projects\DemoChangeBackground\DemoChangeBackground\DemoChangeBackground.csproj;x86
