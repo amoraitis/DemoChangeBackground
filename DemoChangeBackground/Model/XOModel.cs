@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 
 namespace DemoChangeBackground.Model
 {
     //Model for TicTacToe Items
-    class XOModel
+    class MyShape
     {
         //Boolean to check if an item is X or O
         public Boolean X { get; set; }
@@ -16,10 +12,10 @@ namespace DemoChangeBackground.Model
         public Symbol Shape { get; set; }
         public int size { get; private set; }
 
-        public XOModel()
+        public MyShape()
         {
-            this.size=17;
-            this.setX();            
+            this.size=92;
+            this.Shape = (Symbol)0x200B;
         }
         public void setX()
         {

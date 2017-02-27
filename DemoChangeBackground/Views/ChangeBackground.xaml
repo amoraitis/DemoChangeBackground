@@ -13,7 +13,7 @@
             <TextBlock Text="Respond!" FontSize="30" Foreground="White"/>
         </HyperlinkButton>
         <Border Background="White" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <TextBlock x:Name="Information" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="30"/>
+            <TextBlock TextWrapping="Wrap" x:Name="Information" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="30"/>
         </Border>
     </Grid>
 </Page>

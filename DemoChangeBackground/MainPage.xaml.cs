@@ -13,22 +13,20 @@ namespace DemoChangeBackground
         public MainPage()
         {
             this.InitializeComponent();
-            listView.ItemsSource = ViewModel.QuotaMenuItems.GetMenuItems();
-        }
-        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
-        {
-            base.OnNavigatingFrom(e);
-            foreach (var item in this.Frame.BackStack.ToList())
-                this.Frame.BackStack.Remove(item);
-        }
+            Windows.UI.Core.SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                Windows.UI.Core.AppViewBackButtonVisibility.Collapsed;
+            listView.ItemsSource = ViewModel.QuotaMenuItems.GetMenuItems();            
+        }        
         private void ItemsControl_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
-            setItem();
+            setItem();            
             ((Frame)Window.Current.Content).Navigate(myItem.Page);
         }
         private void setItem()
         {
             myItem = (MenuItem)listView.SelectedItem;
         }
+
+       
     }
 }

@@ -20,7 +20,7 @@ namespace DemoChangeBackground.Views
         {
             base.OnNavigatedTo(e);
             //Documentation:https://docs.microsoft.com/en-us/uwp/api/windows.ui.xaml.dispatchertimer
-            timer = new DispatcherTimer() { Interval = new TimeSpan(0, 0, 0, 1) };
+            timer = new DispatcherTimer() { Interval = new TimeSpan(0, 0, 0, 2) };
             timer.Start();
             //Sample:https://github.com/Microsoft/Windows-universal-samples/blob/master/Samples/Accelerometer/cs/Scenario3_Polling.xaml.cs
             timer.Tick += onStop;
@@ -39,6 +39,7 @@ namespace DemoChangeBackground.Views
             MainGrid.Background = new SolidColorBrush(Windows.UI.Colors.Red);
             var sum = clicked - now;
             Information.Text = "You did "+sum.TotalSeconds.ToString()+" seconds to respond";
+            //MyRespond.IsEnabled = false;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

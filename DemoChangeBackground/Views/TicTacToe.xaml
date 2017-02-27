@@ -7,13 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="48"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Button Content="Back" x:Name="BackButton" Click="BackButton_Click"/>
-        <ItemsControl Grid.Row="1">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">        
+        <ItemsControl x:Name="Items" Tapped="Items_Tapped" HorizontalAlignment="Center">
             <GridView x:Name="TicTacContainer">
                 <GridView.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -21,9 +16,13 @@
                     </ItemsPanelTemplate>
                 </GridView.ItemsPanel>
                 <GridView.ItemTemplate>
-                    <DataTemplate x:DataType="local:XOModel">
-                        <Border BorderThickness="5">
-                            <SymbolIcon Symbol="{Binding Shape}"/>
+                    <DataTemplate x:DataType="local:MyShape">
+                        <Border BorderThickness="5" BorderBrush="Black">
+                            <SymbolIcon x:Name="Shape" Symbol="{Binding Shape, Mode=TwoWay}" Width="{Binding size}" Height="{Binding size}" RenderTransformOrigin="0.5,0.5">
+                                <SymbolIcon.RenderTransform>
+                                    <CompositeTransform ScaleX="2" ScaleY="2"/>
+                                </SymbolIcon.RenderTransform>
+                            </SymbolIcon>
                         </Border>
                     </DataTemplate>
                 </GridView.ItemTemplate>
